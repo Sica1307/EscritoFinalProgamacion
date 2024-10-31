@@ -1,30 +1,14 @@
 ﻿using MySql.Data.MySqlClient;
 
-public class Conexion
+namespace Datos
 {
-    private string connectionString = "server=localhost;database=escrito;uid=root;pwd=almi1323;";
-    private MySqlConnection connection;
-
-    public MySqlConnection Conectarse()
+    public class Conexion
     {
-        if (connection == null)
-        {
-            connection = new MySqlConnection(connectionString);
-        }
+        private string connectionString = "server=localhost;database=escrito;uid=root;pwd=almi1323;";
 
-        if (connection.State == System.Data.ConnectionState.Closed)
+        public MySqlConnection CrearConexion()
         {
-            connection.Open();
-        }
-
-        return connection;
-    }
-
-    public void Desconectarse()
-    {
-        if (connection != null && connection.State == System.Data.ConnectionState.Open)
-        {
-            connection.Close();
+            return new MySqlConnection(connectionString);
         }
     }
 }
